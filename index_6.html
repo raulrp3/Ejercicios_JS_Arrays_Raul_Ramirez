@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>EJERCICIO 6</title>
+</head>
+<body>
+	
+</body>
+<script>
+	window.onload = function(){
+		var results = new Array(100);
+		var firstDice,secondDice;
+		var numbers;
+		for(var i = 0;i < 100;i++){
+			firstDice = Math.floor(Math.random() * (7 - 1) + 1);
+			secondDice = Math.floor(Math.random() * (7 - 1) + 1)
+			results[i] = firstDice + secondDice;
+		}
+		numbers = counterNumber(results);
+		document.write("Número mayor: " + higher(results) + "</br>");
+		document.write("Número menor: " + less(results) + "</br>");
+		document.write("Número que más veces se repite: " + repeatedMore(numbers) + "</br>");
+		document.write("Número que menos veces se repite: " + repeatedLess(numbers));
+	}
+	function higher(numbers){
+		return Math.max.apply(null,numbers);
+	}
+	function less(numbers){
+		return Math.min.apply(null,numbers);
+	}
+	function counterNumber(numbers){
+		var counter = 2;
+		var result = new Array(13);
+		while (counter < 13){
+			result[counter] = numbers.filter(function(value){
+				return value == counter;
+			}).length;
+			counter++;
+		}
+		return result;
+	}
+	function repeatedMore(numbers){
+		var max = 0,position = 0;
+		for (var i = 0;i < numbers.length;i++){
+			if (numbers[i] > max){
+				max = numbers[i];
+				position = i;
+			}
+		}
+		return position;
+	}
+	function repeatedLess(numbers){
+		var min = numbers[2],position = 2;
+		for (var i = 2;i < numbers.length;i++){
+			if (numbers[i] < min){
+				min = numbers[i];
+				position = i;
+			}
+		}
+		return position;
+	}
+</script>
+</html>
