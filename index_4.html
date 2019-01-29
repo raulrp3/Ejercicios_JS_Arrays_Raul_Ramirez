@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>EJERCICIO 4</title>
+</head>
+<body>
+	
+</body>
+<script>
+	window.onload = function(){
+		var values = [true,5,false,"hola","adios",2];
+		var strings = pullAparts(values,"string");
+		var booleans = pullAparts(values,"boolean");
+		var numbers = pullAparts(values,"number");
+		document.write("Cadena mayor: " + calcString(strings) + "</br>");
+		document.write(calcBoolean(booleans) + "</br>");
+		document.write(calcNumber(numbers));
+	}
+	function pullAparts(values,type){
+		var result = new Array();
+		for (i = 0;i < values.length;i++){
+			if (typeof(values[i]) === type){
+				result.push(values[i]);
+			}
+		}
+		return result;
+	}
+	function calcString(strings){
+		var higher = "";
+		var maxLength = 0;
+		for (var i = 0;i <strings.length;i++){
+			if (strings[i].length > maxLength){
+				higher = strings[i];
+				maxLength = strings[i].length;
+			}
+		}
+		return higher;
+	}
+	function calcBoolean(booleans){
+		var firstResult = booleans[0] && booleans[1];
+		var secondResult = booleans[0] || booleans[1];
+		return "AND: " + firstResult + ",OR: " + secondResult;
+	}
+	function calcNumber(numbers){
+		var sum = numbers[0] + numbers[1];
+		var sub = numbers[0] - numbers[1];
+		var prod = numbers[0] * numbers[1];
+		var div = numbers[0] / numbers[1];
+		var mod = numbers[0] % numbers[1];
+		return "SUM: " + sum + ",REST: " + sub + ",PROD: " + prod + ",DIV: " + div + ",MOD: " + mod;
+	}
+</script>
+</html>

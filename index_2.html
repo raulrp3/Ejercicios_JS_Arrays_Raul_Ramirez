@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>EJERCICIO 2</title>
+</head>
+<body>
+	
+</body>
+<script>
+	window.onload = function(){
+		var string = prompt("Introduce una cadena: ");
+		document.write("Cadena invertida: " + reverseString(string) + "</br>");
+		document.write(isPalindrome(string));
+	}
+	function reverseString(string){
+		var newString = "";
+		if (string){
+			for (var i = string.length - 1;i >= 0;i--){
+				newString += string[i];
+			}
+		}
+		return newString;
+	}
+	function isPalindrome(string){
+		var result = "";
+		if (string){
+			result = "SÍ es un palíndromo";
+			string = string.replace(/ /g,"");
+			for (var i = 0;i < string.length / 2;i++){
+				if (string.charAt(i) != string.charAt(string.length - 1 - i)){
+					result = "NO es un palíndromo";
+					break;
+				}
+			}
+		}
+		return result;
+	}
+</script>
+</html>
