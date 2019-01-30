@@ -30,7 +30,7 @@
 		return Math.min.apply(null,numbers);
 	}
 	function counterNumber(numbers){
-		var counter = 2;
+		var counter = 0;
 		var result = new Array(13);
 		while (counter < 13){
 			result[counter] = numbers.filter(function(value){
@@ -42,22 +42,22 @@
 	}
 	function repeatedMore(numbers){
 		var max = 0,position = 0;
-		for (var i = 0;i < numbers.length;i++){
-			if (numbers[i] > max){
-				max = numbers[i];
-				position = i;
+		numbers.forEach(function(value,index){
+			if (value > max){
+				max = value;
+				position = index;
 			}
-		}
+		});
 		return position;
 	}
 	function repeatedLess(numbers){
 		var min = numbers[2],position = 2;
-		for (var i = 2;i < numbers.length;i++){
-			if (numbers[i] < min){
-				min = numbers[i];
-				position = i;
+		numbers.forEach(function(value,index){
+			if (value < min && value != 0){
+				min = value;
+				position = index;
 			}
-		}
+		});
 		return position;
 	}
 </script>
