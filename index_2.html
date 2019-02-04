@@ -25,14 +25,11 @@
 	function isPalindrome(string,inverse){
 		var result = "";
 		if (string){
-			result = "SÍ es un palíndromo";
+			result = "NO es un palíndromo";
 			string = string.replace(/ /g,"");
 			inverse = inverse.replace(/ /g,"");
-			for (var i = 0;i < string.length / 2;i++){
-				if (string.charAt(i) != string.charAt(inverse.length - 1 - i)){
-					result = "NO es un palíndromo";
-					break;
-				}
+			if (string == inverse){
+				result = "SÍ es un palíndromo";
 			}
 		}
 		return result;
