@@ -19,10 +19,19 @@
 	}
 	function pullAparts(values,type){
 		var result = new Array();
-		for (i = 0;i < values.length;i++){
-			if (typeof(values[i]) === type){
-				result.push(values[i]);
-			}
+		if (type == "boolean"){
+			values.forEach(function(value){
+				if (typeof(value) === type){
+					result.push(value);
+				}
+			})
+		}
+		else{
+			result = values.filter(function(value){
+				if (typeof(value) === type){
+					return value;
+				}
+			});
 		}
 		return result;
 	}
@@ -38,16 +47,26 @@
 		return higher;
 	}
 	function calcBoolean(booleans){
-		var firstResult = booleans[0] && booleans[1];
-		var secondResult = booleans[0] || booleans[1];
-		return "AND: " + firstResult + ",OR: " + secondResult;
+		var andResult = booleans[0],orResult = booleans[0];
+		booleans.forEach(function(value,index){
+			if (index != 0){
+				andResult = andResult && value;
+				orResult = orResult || value;
+			}
+		});
+		return "AND: " + andResult + ",OR: " + orResult;
 	}
 	function calcNumber(numbers){
-		var sum = numbers[0] + numbers[1];
-		var sub = numbers[0] - numbers[1];
-		var prod = numbers[0] * numbers[1];
-		var div = numbers[0] / numbers[1];
-		var mod = numbers[0] % numbers[1];
+		var sum = numbers[0],sub = numbers[0],prod = numbers[0],div = numbers[0],mod = numbers[0];
+		numbers.forEach(function(value,index){
+			if (index != 0){
+				sum += value;
+				sub -= value;
+				prod *= value;
+				div /= value;
+				mod %= value;
+			}
+		});
 		return "SUM: " + sum + ",REST: " + sub + ",PROD: " + prod + ",DIV: " + div + ",MOD: " + mod;
 	}
 </script>

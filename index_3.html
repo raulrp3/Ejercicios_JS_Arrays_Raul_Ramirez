@@ -10,9 +10,9 @@
 <script>
 	window.onload = function(){
 		var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-		for (var i = 0;i < months.length; i++){
-			console.log(months[i]);
-		}
+		months.forEach(function(value){
+			console.log(value);
+		});
 	}
 </script>
 </html>
