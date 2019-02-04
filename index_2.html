@@ -11,7 +11,7 @@
 	window.onload = function(){
 		var string = prompt("Introduce una cadena: ");
 		document.write("Cadena invertida: " + reverseString(string) + "</br>");
-		document.write(isPalindrome(string));
+		document.write(isPalindrome(string,reverseString(string)));
 	}
 	function reverseString(string){
 		var newString = "";
@@ -22,13 +22,14 @@
 		}
 		return newString;
 	}
-	function isPalindrome(string){
+	function isPalindrome(string,inverse){
 		var result = "";
 		if (string){
 			result = "SÍ es un palíndromo";
 			string = string.replace(/ /g,"");
+			inverse = inverse.replace(/ /g,"");
 			for (var i = 0;i < string.length / 2;i++){
-				if (string.charAt(i) != string.charAt(string.length - 1 - i)){
+				if (string.charAt(i) != string.charAt(inverse.length - 1 - i)){
 					result = "NO es un palíndromo";
 					break;
 				}
